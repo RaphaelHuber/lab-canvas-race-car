@@ -1,23 +1,23 @@
-const canvas = document.getElementById("my-canvas");
-const ctx = canvas.getContext("2d");
+const canvas = document.getElementById('my-canvas');
+const ctx = canvas.getContext('2d');
 const carSize = 158;
 let x = 260;
-let y = 400;
+const y = 400;
 let index = 2;
 let arrayObstacle = [];
 let score = 0;
 const scale = (158 / 319) * 150;
 
 function textGameOver() {
-  ctx.font = "60px Arial";
-  ctx.fillStyle = "black";
-  ctx.fillText("Game Over", 127, 250);
+  ctx.font = '60px Arial';
+  ctx.fillStyle = 'black';
+  ctx.fillText('Game Over', 127, 250);
 }
 
 function textScore() {
-  ctx.font = "30px Arial";
-  ctx.fillStyle = "white";
-  ctx.fillText("Score: " + score, 60, 30);
+  ctx.font = '30px Arial';
+  ctx.fillStyle = 'white';
+  ctx.fillText('Score: ' + score, 60, 30);
 }
 
 function rectangle(x, y, wh, hh) {
@@ -42,6 +42,8 @@ function pickObstacle() {
     case 2:
       arrayObstacle.push(new Obstacle(350, 0));
       break;
+    default:
+      break;
   }
 }
 
@@ -50,16 +52,16 @@ function drawDashedLine(pattern) {
   ctx.setLineDash(pattern);
   ctx.moveTo(300, 0);
   ctx.lineTo(300, 600);
-  ctx.strokeStyle = "white";
+  ctx.strokeStyle = 'white';
   ctx.lineWidth = 10;
   ctx.stroke();
 }
 
 function road() {
-  ctx.fillStyle = "#008100";
+  ctx.fillStyle = '#008100';
   rectangle(0, 0, 30, 600);
   rectangle(570, 0, 30, 600);
-  ctx.fillStyle = "white";
+  ctx.fillStyle = 'white';
   rectangle(40, 0, 15, 600);
   rectangle(545, 0, 15, 600);
   drawDashedLine([20, 20]);
@@ -67,7 +69,7 @@ function road() {
 
 function drawCar() {
   const img = new Image();
-  let imgScale = 158 / 319;
+  const imgScale = 158 / 319;
   img.onload = function () {
     ctx.drawImage(img, x, y, 150 * imgScale, 150);
   };
@@ -75,7 +77,7 @@ function drawCar() {
 }
 
 function obstacle(x, y) {
-  ctx.fillStyle = "#890000";
+  ctx.fillStyle = '#890000'";
   rectangle(x, y, 150, 30);
 }
 
